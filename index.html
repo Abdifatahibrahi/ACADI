@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACADI · African Community Aid & Development</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ---------- RESET & BASE ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      background: #fcf8f0;
+      color: #1e2b2f;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- BUTTONS ---------- */
+    .btn {
+      display: inline-block;
+      background: #c44536;
+      color: #fff;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      transition: 0.25s ease;
+      box-shadow: 0 4px 12px rgba(196, 69, 54, 0.25);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #a83226;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(196, 69, 54, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #c44536;
+      color: #c44536;
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: #c44536;
+      color: #fff;
+    }
+
+    /* ---------- HEADER / NAV ---------- */
+    header {
+      background: #1e2b2f;
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #ffffff;
+      flex-shrink: 0;
+      padding: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .logo-text {
+      color: #f5e7d9;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text span {
+      color: #e8b88a;
+      font-weight: 300;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: #e6dcd0;
+      transition: 0.2s;
+      font-size: 1rem;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 6px;
+    }
+
+    .nav-links a:hover {
+      color: #f0c9a8;
+      border-bottom-color: #c44536;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      background: linear-gradient(135deg, #243b3f 0%, #1a2e32 100%);
+      color: #f5efe8;
+      padding: 60px 0 70px;
+      border-radius: 0 0 40px 40px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "⏤";
+      position: absolute;
+      right: -40px;
+      bottom: -60px;
+      font-size: 20rem;
+      opacity: 0.04;
+      color: #e8b88a;
+      transform: rotate(-6deg);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 2.9rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 i {
+      color: #e8b88a;
+      font-size: 2.6rem;
+      margin-right: 10px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      opacity: 0.85;
+      max-width: 550px;
+      margin-bottom: 28px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 30px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats div {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 10px 20px;
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-stats i {
+      color: #e8b88a;
+      margin-right: 8px;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image i {
+      font-size: 10rem;
+      color: #e8b88a;
+      opacity: 0.35;
+      text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ---------- SECTION TITLE ---------- */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1e2b2f;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: #c44536;
+      border-radius: 4px;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .section-title-center:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* ---------- SECTORS ---------- */
+    .sectors {
+      padding: 30px 0 50px;
+    }
+
+    .sector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .sector-card {
+      background: white;
+      padding: 28px 18px 22px;
+      border-radius: 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      text-align: center;
+      transition: 0.25s;
+      border: 1px solid #f0e8dc;
+    }
+
+    .sector-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+      border-color: #e8b88a;
+    }
+
+    .sector-card i {
+      font-size: 2.6rem;
+      color: #c44536;
+      background: #f9efe8;
+      padding: 16px;
+      border-radius: 60px;
+      margin-bottom: 16px;
+    }
+
+    .sector-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .sector-card p {
+      font-size: 0.95rem;
+      color: #3f4f55;
+    }
+
+    /* ---------- MISSION & VISION ---------- */
+    .mv-section {
+      background: #f2ebe1;
+      padding: 50px 0;
+      border-radius: 40px;
+      margin: 20px 0 40px;
+    }
+
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .mv-card {
+      background: white;
+      padding: 32px 28px;
+      border-radius: 32px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+      transition: 0.2s;
+      border: 1px solid #f0e8dc;
+    }
+
+    .mv-card:hover {
+      border-color: #e8b88a;
+    }
+
+    .mv-card i {
+      font-size: 2.4rem;
+      color: #c44536;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .mv-card h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #1e2b2f;
+    }
+
+    .mv-card p {
+      font-size: 1.05rem;
+      color: #2f454a;
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about-mission {
+      background: #f2ebe1;
+      padding: 50px 0;
+      border-radius: 40px;
+      margin: 20px 0 40px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .about-text p {
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+    }
+
+    .about-text strong {
+      color: #a83226;
+    }
+
+    .mission-list {
+      background: white;
+      padding: 28px 30px;
+      border-radius: 28px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      list-style: none;
+    }
+
+    .mission-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #ede6db;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+    }
+
+    .mission-list li:last-child {
+      border: none;
+    }
+
+    .mission-list i {
+      color: #c44536;
+      width: 24px;
+    }
+
+    /* ---------- PARTNERSHIP HIGHLIGHT ---------- */
+    .partnership-highlight {
+      background: #1e2b2f;
+      color: #f5efe8;
+      padding: 48px 40px;
+      border-radius: 40px;
+      margin: 40px 0 50px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+      position: relative;
+    }
+
+    .partnership-highlight h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .partnership-highlight h2 i {
+      color: #e8b88a;
+      margin-right: 12px;
+    }
+
+    .partnership-highlight p {
+      max-width: 800px;
+      font-size: 1.05rem;
+      opacity: 0.9;
+    }
+
+    .partnership-highlight .btn {
+      margin-top: 24px;
+    }
+
+    .partnership-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .partnership-badge {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 20px 24px;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+    }
+
+    .partnership-badge i {
+      font-size: 2.4rem;
+      color: #e8b88a;
+    }
+
+    .partnership-badge span {
+      display: block;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-top: 6px;
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact-request {
+      background: white;
+      padding: 40px 40px 50px;
+      border-radius: 40px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+      margin: 30px 0 50px;
+    }
+
+    .request-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .request-list {
+      list-style: none;
+    }
+
+    .request-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid #f0e8dc;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .request-list i {
+      color: #c44536;
+      font-size: 1.2rem;
+      width: 28px;
+    }
+
+    .contact-details {
+      background: #f7f2ea;
+      padding: 28px 28px;
+      border-radius: 28px;
+    }
+
+    .contact-details i {
+      margin-right: 12px;
+      color: #c44536;
+      width: 24px;
+    }
+
+    .contact-details p {
+      margin: 12px 0;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: #1a282c;
+      color: #cdd6d0;
+      padding: 30px 0;
+      border-radius: 40px 40px 0 0;
+      margin-top: 30px;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-grid .logo-text {
+      font-size: 1.4rem;
+    }
+
+    .footer-small {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid, .request-grid, .partnership-grid, .mv-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      .partnership-highlight {
+        padding: 32px 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .nav-links {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .hero-stats {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .sector-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .contact-request {
+        padding: 24px 16px;
+      }
+      .logo-icon {
+        width: 48px;
+        height: 48px;
+      }
+      .logo-text {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-container">
+      <div class="logo-wrapper">
+        <!-- Your logo image - now properly displayed -->
+        <div class="logo-icon">
+          <img src="acadi.png" alt="ACADI Logo">
+        </div>
+        <div class="logo-text">ACADI <span>✦</span></div>
+      </div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Our Work</a>
+        <a href="#">Partnership</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1><i class="fas fa-hand-holding-heart"></i> African Community Aid</h1>
+          <p style="font-size: 1.4rem; font-weight: 300; margin-bottom: 6px;">& Development Initiatives</p>
+          <p>Supporting vulnerable communities in ASAL regions through locally-led, accountable interventions in Education, Livelihoods, DRM, WASH, Peacebuilding & Cash Assistance.</p>
+          <div class="hero-stats">
+            <div><i class="fas fa-map-marker-alt"></i> Wajir · Mandera · Garissa · Marsabit</div>
+            <div><i class="fas fa-users"></i> Community-driven</div>
+          </div>
+          <a href="#" class="btn" style="margin-top: 16px;"><i class="fas fa-handshake"></i> Explore partnership</a>
+        </div>
+        <div class="hero-image">
+          <i class="fas fa-tree"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTORS -->
+    <section class="sectors container">
+      <h2 class="section-title">Our core sectors</h2>
+      <div class="sector-grid">
+        <div class="sector-card"><i class="fas fa-graduation-cap"></i><h3>Education</h3><p>Access to quality learning in remote communities</p></div>
+        <div class="sector-card"><i class="fas fa-seedling"></i><h3>Livelihoods</h3><p>Sustainable income & food security</p></div>
+        <div class="sector-card"><i class="fas fa-water"></i><h3>WASH</h3><p>Water, sanitation & hygiene promotion</p></div>
+        <div class="sector-card"><i class="fas fa-hand-holding-water"></i><h3>DRM</h3><p>Disaster risk management & resilience</p></div>
+        <div class="sector-card"><i class="fas fa-dove"></i><h3>Peacebuilding</h3><p>Conflict resolution & social cohesion</p></div>
+        <div class="sector-card"><i class="fas fa-hand-holding-usd"></i><h3>Cash Assistance</h3><p>Emergency & recovery cash transfers</p></div>
+      </div>
+    </section>
+
+    <!-- MISSION & VISION -->
+    <div class="container mv-section">
+      <h2 class="section-title section-title-center text-center" style="display: block; text-align: center;">Our compass</h2>
+      <div class="mv-grid" style="margin-top: 32px;">
+        <div class="mv-card">
+          <i class="fas fa-bullseye"></i>
+          <h3>Mission</h3>
+          <p>To empower vulnerable communities in Kenya's ASAL counties through sustainable, community-driven interventions that enhance resilience, improve livelihoods, and uphold human dignity — in partnership with local institutions and government.</p>
+        </div>
+        <div class="mv-card">
+          <i class="fas fa-eye"></i>
+          <h3>Vision</h3>
+          <p>A resilient, self-reliant, and prosperous ASAL community where every individual has access to basic needs, opportunities, and a voice in shaping their own future.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT + values -->
+    <div class="container about-mission">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-title" style="margin-top: 0;">Who we are</h2>
+          <p><strong>African Community Aid and Development Initiatives (ACADI)</strong> is a locally registered humanitarian and development organisation based in <strong>Wajir County</strong>, with operational presence across <strong>Wajir, Mandera, Garissa, and Marsabit</strong> Counties.</p>
+          <p>We work hand-in-hand with government structures and community leadership to deliver community-driven and accountable interventions in the arid and semi-arid lands (ASALs).</p>
+          <p><i class="fas fa-flag" style="color: #c44536;"></i> Our approach: local knowledge, participatory planning, and transparency.</p>
+        </div>
+        <ul class="mission-list">
+          <li><i class="fas fa-check-circle"></i> Community-driven & accountable</li>
+          <li><i class="fas fa-handshake"></i> Collaborative with government & local leaders</li>
+          <li><i class="fas fa-star"></i> Focus on most vulnerable populations</li>
+          <li><i class="fas fa-globe-africa"></i> ASALs expertise – Wajir, Mandera, Garissa, Marsabit</li>
+          <li><i class="fas fa-heart"></i> Humanitarian principles & neutrality</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PARTNERSHIP HIGHLIGHT (Islamic Relief) -->
+    <div class="container partnership-highlight">
+      <div class="partnership-grid">
+        <div>
+          <h2><i class="fas fa-handshake"></i> Partnership with Islamic Relief Worldwide – Kenya</h2>
+          <p>We are aware that Islamic Relief Worldwide – Kenya has extensive experience and a strong programme footprint in ASAL counties, particularly in WASH, livelihoods, and cash-based humanitarian assistance. As a local organisation, we are keen to learn from your work and explore potential future partnership opportunities.</p>
+          <p style="margin-top: 12px;"><i class="fas fa-arrow-right" style="color: #e8b88a;"></i> We humbly request an introductory meeting, either virtual or physical, to:</p>
+          <ul style="list-style: none; margin-top: 14px;">
+            <li style="margin-bottom: 8px;"><i class="fas fa-circle" style="color: #e8b88a; font-size: 0.6rem; vertical-align: middle; margin-right: 8px;"></i> Introduce ACADI further</li>
+            <li style="margin-bottom: 8px;"><i class="fas fa-circle" style="color: #e8b88a; font-size: 0.6rem; vertical-align: middle; margin-right: 8px;"></i> Understand Islamic Relief's partnership approach</li>
+            <li style="margin-bottom: 8px;"><i class="fas fa-circle" style="color: #e8b88a; font-size: 0.6rem; vertical-align: middle; margin-right: 8px;"></i> Explore possible areas of collaboration</li>
+          </ul>
+          <a href="#" class="btn"><i class="fas fa-calendar-check"></i> Request a meeting</a>
+        </div>
+        <div class="partnership-badge">
+          <i class="fas fa-hands-helping"></i>
+          <span>Local implementing partner · sub-grantee</span>
+          <div style="margin-top: 16px; background: #2f454a; border-radius: 60px; padding: 8px 12px; font-size: 0.85rem;">Islamic Relief Worldwide – Kenya</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT / REQUEST -->
+    <div class="container contact-request">
+      <div class="request-grid">
+        <div>
+          <h2 class="section-title" style="margin-top: 0;">Get in touch</h2>
+          <ul class="request-list">
+            <li><i class="fas fa-map-pin"></i> Wajir County, Kenya</li>
+            <li><i class="fas fa-phone-alt"></i> +254 700 123 456</li>
+            <li><i class="fas fa-envelope"></i> info@acadi-kenya.org</li>
+            <li><i class="fas fa-globe"></i> www.acadi-kenya.org</li>
+          </ul>
+          <p style="margin-top: 24px; font-weight: 500;"><i class="fas fa-clock" style="color: #c44536;"></i> We welcome partnership discussions and learning exchanges.</p>
+        </div>
+        <div class="contact-details">
+          <h3 style="font-weight: 600; margin-bottom: 12px;"><i class="fas fa-users"></i> Partnership request</h3>
+          <p><i class="fas fa-check-circle"></i> Introductory meeting (virtual / physical)</p>
+          <p><i class="fas fa-check-circle"></i> Explore local implementing partner role</p>
+          <p><i class="fas fa-check-circle"></i> Sub-grantee opportunities</p>
+          <p><i class="fas fa-check-circle"></i> ASAL programme collaboration</p>
+          <p style="margin-top: 16px; background: #e8dccc; padding: 12px; border-radius: 40px; text-align: center; font-weight: 500;"><i class="fas fa-arrow-right"></i> We look forward to hearing from you.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="logo-text" style="color: #f5efe8;">ACADI <span style="color: #e8b88a;">✦</span></div>
+        <div class="footer-small">African Community Aid and Development Initiatives</div>
+        <div style="margin-top: 6px; font-size: 0.85rem; opacity: 0.6;">Wajir · Mandera · Garissa · Marsabit</div>
+      </div>
+      <div style="text-align: right;">
+        <p style="font-size: 0.9rem;"><i class="fas fa-handshake"></i> Partnership & collaboration</p>
+        <p class="footer-small">© 2026 ACADI – locally-led, community-driven</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
